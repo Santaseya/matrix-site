@@ -29,6 +29,21 @@ function calculateMatrix() {
     let MK_JEN = reduceToOneDigit(A + G);
     let MK_MUZ = reduceToOneDigit(V + G);
 
+    // **Вместо обновления Матрицы, выводим числа ВВЕРХУ!**
+    let resultNumbers = `
+        <p>${A}</p>
+        <p>${B}</p>
+        <p>${V}</p>
+        <p>${G}</p>
+        <p>${D}</p>
+        <p>${LO}</p>
+        <p>${LM}</p>
+        <p>${MK_JEN}</p>
+        <p>${MK_MUZ}</p>
+    `;
+    document.getElementById("resultNumbers").innerHTML = resultNumbers;
+}
+
     // Обновляем числа в диаграмме
     updateMatrix([
         D, // Центр (Зона комфорта)
