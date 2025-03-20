@@ -76,3 +76,8 @@ function updateMatrix(numbers = []) {
 updateMatrix([]);
 // Очищаем числа в начале
 document.getElementById("resultNumbers").innerHTML = "";
+// Очищаем Матрицу при загрузке страницы
+window.onload = function() {
+    updateMatrix(["", "", "", "", "", "", "", "", ""]); // Очищаем круги
+    document.getElementById("resultNumbers").innerHTML = ""; // Очищаем список чисел сверху
+};
