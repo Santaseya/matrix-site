@@ -14,26 +14,63 @@
     <button onclick="calculateMatrix()">Рассчитать</button>
 
     <div class="result" id="result"></div>
-<svg id="matrixSvg" width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+<svg <svg id="matrixSvg" width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
     <!-- Фон -->
     <rect x="0" y="0" width="500" height="500" fill="#1a0033"/>
 
-    <!-- Центральный круг -->
-    <circle cx="250" cy="250" r="40" fill="#ffd700" stroke="black" stroke-width="2"/>
-    <text x="250" y="255" text-anchor="middle" font-size="24px" font-family="Arial" fill="black" id="centerNumber">6</text>
+    <!-- 🔷 Внешний круг -->
+    <circle cx="250" cy="250" r="200" stroke="white" stroke-width="2" fill="none"/>
 
-    <!-- Другие круги (пример) -->
-    <circle cx="250" cy="100" r="30" fill="#8a2be2" stroke="black" stroke-width="2"/>
-    <text x="250" y="105" text-anchor="middle" font-size="20px" font-family="Arial" fill="white" id="topNumber">3</text>
+    <!-- 🔶 Перевёрнутый квадрат (ромб) -->
+    <polygon points="250,50 400,250 250,450 100,250" stroke="gold" stroke-width="2" fill="none"/>
 
-    <circle cx="100" cy="250" r="30" fill="#8a2be2" stroke="black" stroke-width="2"/>
-    <text x="100" y="255" text-anchor="middle" font-size="20px" font-family="Arial" fill="white" id="leftNumber">8</text>
+    <!-- 🔵 Центральное число (D, уменьшено) -->
+    <circle cx="250" cy="250" r="25" fill="#ffd700" stroke="black" stroke-width="2"/>
+    <text x="250" y="255" text-anchor="middle" font-size="18px" font-family="Arial" fill="black" id="centerNumber">D</text>
 
-    <circle cx="400" cy="250" r="30" fill="#8a2be2" stroke="black" stroke-width="2"/>
-    <text x="400" y="255" text-anchor="middle" font-size="20px" font-family="Arial" fill="white" id="rightNumber">19</text>
+    <!-- Четыре числа (A, B, V, G) -->
+    <circle cx="250" cy="80" r="30" fill="#8a2be2" stroke="black" stroke-width="2"/>
+    <text x="250" y="85" text-anchor="middle" font-size="20px" font-family="Arial" fill="white" id="topNumber">B</text>
 
-    <circle cx="250" cy="400" r="30" fill="#8a2be2" stroke="black" stroke-width="2"/>
-    <text x="250" y="405" text-anchor="middle" font-size="20px" font-family="Arial" fill="white" id="bottomNumber">3</text>
+    <circle cx="80" cy="250" r="30" fill="#8a2be2" stroke="black" stroke-width="2"/>
+    <text x="80" y="255" text-anchor="middle" font-size="20px" font-family="Arial" fill="white" id="leftNumber">A</text>
+
+    <circle cx="250" cy="420" r="30" fill="#8a2be2" stroke="black" stroke-width="2"/>
+    <text x="250" y="425" text-anchor="middle" font-size="20px" font-family="Arial" fill="white" id="bottomNumber">G</text>
+
+    <circle cx="420" cy="250" r="30" fill="#8a2be2" stroke="black" stroke-width="2"/>
+    <text x="420" y="255" text-anchor="middle" font-size="20px" font-family="Arial" fill="white" id="rightNumber">V</text>
+
+    <!-- Внешние числа (Линии рода, материальная карма) -->
+    <circle cx="80" cy="80" r="30" fill="#22a6b3" stroke="black" stroke-width="2"/>
+    <text x="80" y="85" text-anchor="middle" font-size="18px" font-family="Arial" fill="white" id="leftTop">ЛО</text>
+
+    <circle cx="420" cy="80" r="30" fill="#22a6b3" stroke="black" stroke-width="2"/>
+    <text x="420" y="85" text-anchor="middle" font-size="18px" font-family="Arial" fill="white" id="rightTop">ЛМ</text>
+
+    <circle cx="80" cy="420" r="30" fill="#22a6b3" stroke="black" stroke-width="2"/>
+    <text x="80" y="425" text-anchor="middle" font-size="18px" font-family="Arial" fill="white" id="leftBottom">МК ЖЕН.</text>
+
+    <circle cx="420" cy="420" r="30" fill="#22a6b3" stroke="black" stroke-width="2"/>
+    <text x="420" y="425" text-anchor="middle" font-size="18px" font-family="Arial" fill="white" id="rightBottom">МК МУЖ.</text>
+
+    <!-- ✅ Линии к Материальной Карме (ЛО → МК ЖЕН, ЛМ → МК МУЖ) -->
+    <line x1="80" y1="80" x2="80" y2="420" stroke="white" stroke-width="2"/>  <!-- ЛО вниз -->
+    <line x1="420" y1="80" x2="420" y2="420" stroke="white" stroke-width="2"/>  <!-- ЛМ вниз -->
+    
+    <!-- ✅ Диагональные линии -->
+    <line x1="80" y1="80" x2="420" y2="420" stroke="white" stroke-width="2"/>  <!-- ЛО → МК ЖЕН -->
+    <line x1="420" y1="80" x2="80" y2="420" stroke="white" stroke-width="2"/>  <!-- ЛМ → МК МУЖ -->
+
+    <!-- ✅ Соединяем в квадрат -->
+    <line x1="80" y1="420" x2="420" y2="420" stroke="white" stroke-width="2"/>
+    <line x1="80" y1="80" x2="420" y2="80" stroke="white" stroke-width="2"/>
+
+    <!-- ✅ Добавляем линии A → В и Б → Г -->
+    <line x1="80" y1="250" x2="420" y2="250" stroke="white" stroke-width="2"/>  <!-- A → В -->
+    <line x1="250" y1="80" x2="250" y2="420" stroke="white" stroke-width="2"/>  <!-- Б → Г -->
+</svg>
+
 </svg>
 
     <script src="script.js"></script>
