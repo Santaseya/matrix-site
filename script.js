@@ -59,3 +59,5 @@ function updateMatrix(numbers = []) {
 
 // 👇 Теперь матрица полностью пустая при загрузке
 updateMatrix([]);
+// Очищаем числа в начале
+document.getElementById("resultNumbers").innerHTML = "";
