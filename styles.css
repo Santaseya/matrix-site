@@ -57,6 +57,14 @@ button:hover {
 .result strong {
     color: #ffd700;
 }
+/* 🔥 Принудительное применение шрифтов */
+* {
+    font-family: "Marcellus", serif !important;
+}
+
+p, span, div {
+    font-family: "PT Serif", serif !important;
+}
 
 
 .result strong {
