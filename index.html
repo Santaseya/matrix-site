@@ -13,13 +13,10 @@
     <input type="date" id="birthdate">
     <button onclick="calculateMatrix()">Рассчитать</button>
 
-    <!-- Это область для отображения результатов -->
-    <div id="resultNumbers" style="text-align: center; font-size: 18px; color: white;"></div>
-
-    <!-- Пустая матрица (значения будут обновляться при расчете) -->
     <div id="matrix">
-        <div class="circle" id="topNumber"></div> <!-- B -->
-        <div class="circle" id="leftNumber"></div> <!-- A -->
+        <!-- Пустая матрица, числа будут добавляться с расчетами -->
+        <div class="circle" id="topNumber"></div>  <!-- B -->
+        <div class="circle" id="leftNumber"></div>  <!-- A -->
         <div class="circle" id="rightNumber"></div> <!-- V -->
         <div class="circle" id="bottomNumber"></div> <!-- G -->
         <div class="circle center" id="centerNumber"></div> <!-- D -->
@@ -30,10 +27,9 @@
         <div class="circle small" id="rightBottom"></div> <!-- МК МУЖ -->
     </div>
 
-    <!-- SVG для рисования диаграммы -->
     <svg id="matrixSvg" width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+        <!-- Добавляем элементы для диаграммы -->
         <rect x="0" y="0" width="500" height="500" fill="#1a0033"/>
-
         <circle cx="250" cy="250" r="200" stroke="white" stroke-width="2" fill="none"/>
         <polygon points="250,50 400,250 250,450 100,250" stroke="gold" stroke-width="2" fill="none"/>
         <circle cx="250" cy="250" r="25" fill="#ffd700" stroke="black" stroke-width="2"/>
@@ -54,6 +50,14 @@
         <text x="80" y="425" text-anchor="middle" font-size="18px" font-family="Arial" fill="white" id="leftBottom">МК ЖЕН.</text>
         <circle cx="420" cy="420" r="30" fill="#22a6b3" stroke="black" stroke-width="2"/>
         <text x="420" y="425" text-anchor="middle" font-size="18px" font-family="Arial" fill="white" id="rightBottom">МК МУЖ.</text>
+        <line x1="80" y1="80" x2="80" y2="420" stroke="white" stroke-width="2"/>
+        <line x1="420" y1="80" x2="420" y2="420" stroke="white" stroke-width="2"/>
+        <line x1="80" y1="80" x2="420" y2="420" stroke="white" stroke-width="2"/>
+        <line x1="420" y1="80" x2="80" y2="420" stroke="white" stroke-width="2"/>
+        <line x1="80" y1="420" x2="420" y2="420" stroke="white" stroke-width="2"/>
+        <line x1="80" y1="80" x2="420" y2="80" stroke="white" stroke-width="2"/>
+        <line x1="80" y1="250" x2="420" y2="250" stroke="white" stroke-width="2"/>
+        <line x1="250" y1="80" x2="250" y2="420" stroke="white" stroke-width="2"/>
     </svg>
 
     <script src="script.js"></script>
