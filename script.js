@@ -15,25 +15,12 @@ function calculateMatrix() {
     let [year, month, day] = birthdate.split("-").map(Number);
 
     // Основные зоны
+    let mainTalentFromGod = month; // Б = Месяц рождения
     let soulTask = reduceToOneDigit(year.toString().split("").reduce((acc, digit) => acc + parseInt(digit), 0)); // В
     let karmaTask = reduceToOneDigit(day + month + soulTask); // Г
+
+    // Зона комфорта
     let comfortZone = reduceToOneDigit(day + month + soulTask + karmaTask); // Д
-
-    // Остальные Таланты от Бога
-    let mainTalentFromGod = month; // Б = Месяц рождения
-    let talent1 = reduceToOneDigit(month + comfortZone); // Б2 (Б+Д)
-    let talent2 = reduceToOneDigit(month + talent1); // Б1 (Б+Б2)
-
-    // Материальная (Финансовая) Карма
-    let moneyEntry = reduceToOneDigit(comfortZone + soulTask); // Вход в Денежный Канал (Е)
-    let secondMaterialKarma = reduceToOneDigit(moneyEntry + soulTask); // Вторая энергия Материальной Кармы
-
-    // Кармический Хвост (по новой формуле)
-    let karmaTail1 = reduceToOneDigit(karmaTask + comfortZone); // Г1 = Г + Д
-    let karmaTail2 = reduceToOneDigit(karmaTask + karmaTail1); // Г2 = Г + Г1
-
-    // Вход в Отношения (отдельно)
-    let relationshipEntry = karmaTail1; // Вход в Отношения = Г1
 
     // Родовые линии
     let fatherLine = reduceToOneDigit(day + month); // ЛО
@@ -43,19 +30,13 @@ function calculateMatrix() {
     let materialKarmaFather = reduceToOneDigit(soulTask + karmaTask); // МР
     let materialKarmaMother = reduceToOneDigit(day + karmaTask); // ЖР
 
-    // Предназначение (исправленная формула)
-    let destinyBefore40_AplusV = reduceToOneDigit(day + soulTask); // (А+В) → если >22, снова складываем
-    let destinyBefore40 = reduceToOneDigit(destinyBefore40_AplusV + (month + karmaTask)); // До 40 лет = (А+В) + (Б+Г)
-    let destiny40_60 = reduceToOneDigit((fatherLine + materialKarmaFather) + (motherLine + materialKarmaMother)); // И1
-    let spiritualDestiny = reduceToOneDigit(destinyBefore40 + destiny40_60); // Духовное предназначение
-
-    // Обновляем числа в диаграмме
+    // Обновляем числа в диаграмме **(поменял местами!)**
     updateMatrix([
         comfortZone, // D (Центр)
-        soulTask, // B (Верх)
+        mainTalentFromGod, // B (Верх) = месяц рождения (Б)
         day, // A (Левый бок)
-        karmaTask, // G (Низ)
-        mainTalentFromGod, // V (Правый бок)
+        karmaTask, // G (Низ) = A + B + V
+        soulTask, // V (Правый бок) = рассчитанное по году рождения (В)
         fatherLine, // ЛО (Левый верхний)
         motherLine, // ЛМ (Правый верхний)
         materialKarmaMother, // ЖР (Левый нижний)
@@ -79,4 +60,3 @@ function updateMatrix(numbers = []) {
 
 // 👇 Теперь матрица полностью пустая при загрузке
 updateMatrix([]);
-
