@@ -14,6 +14,27 @@
     <button onclick="calculateMatrix()">Рассчитать</button>
 
     <div class="result" id="result"></div>
+<svg id="matrixSvg" width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+    <!-- Фон -->
+    <rect x="0" y="0" width="500" height="500" fill="#1a0033"/>
+
+    <!-- Центральный круг -->
+    <circle cx="250" cy="250" r="40" fill="#ffd700" stroke="black" stroke-width="2"/>
+    <text x="250" y="255" text-anchor="middle" font-size="24px" font-family="Arial" fill="black" id="centerNumber">6</text>
+
+    <!-- Другие круги (пример) -->
+    <circle cx="250" cy="100" r="30" fill="#8a2be2" stroke="black" stroke-width="2"/>
+    <text x="250" y="105" text-anchor="middle" font-size="20px" font-family="Arial" fill="white" id="topNumber">3</text>
+
+    <circle cx="100" cy="250" r="30" fill="#8a2be2" stroke="black" stroke-width="2"/>
+    <text x="100" y="255" text-anchor="middle" font-size="20px" font-family="Arial" fill="white" id="leftNumber">8</text>
+
+    <circle cx="400" cy="250" r="30" fill="#8a2be2" stroke="black" stroke-width="2"/>
+    <text x="400" y="255" text-anchor="middle" font-size="20px" font-family="Arial" fill="white" id="rightNumber">19</text>
+
+    <circle cx="250" cy="400" r="30" fill="#8a2be2" stroke="black" stroke-width="2"/>
+    <text x="250" y="405" text-anchor="middle" font-size="20px" font-family="Arial" fill="white" id="bottomNumber">3</text>
+</svg>
 
     <script src="script.js"></script>
 
