@@ -1,3 +1,11 @@
+// Функция, которая редуцирует число до одной цифры
+function reduceToOneDigit(num) {
+    while (num > 22) {
+        num = num.toString().split("").reduce((acc, digit) => acc + parseInt(digit), 0);
+    }
+    return num;
+}
+
 function calculateMatrix() {
     let birthdate = document.getElementById("birthdate").value;
     if (!birthdate) {
@@ -72,7 +80,4 @@ function updateMatrix(numbers = []) {
 
 // 👇 Теперь матрица полностью пустая при загрузке
 updateMatrix([]);
-
-
-
 
