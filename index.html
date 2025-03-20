@@ -1,81 +1,94 @@
-function reduceToOneDigit(num) {
-    while (num > 22) {
-        num = num.toString().split("").reduce((acc, digit) => acc + parseInt(digit), 0);
-    }
-    return num;
-}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Матрица Судьбы</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-function calculateMatrix() {
-    let birthdate = document.getElementById("birthdate").value;
-    if (!birthdate) {
-        alert("Пожалуйста, введите дату рождения.");
-        return;
-    }
+    <h1>Калькулятор Матрицы Судьбы</h1>
+    <p>Введите дату рождения:</p>
+    <input type="date" id="birthdate">
+    <button onclick="calculateMatrix()">Рассчитать</button>
 
-    let [year, month, day] = birthdate.split("-").map(Number);
+    <!-- Это область для отображения результатов -->
+    <div id="resultNumbers" style="text-align: center; font-size: 18px; color: white;"></div>
 
-    // Основные зоны
-    let soulTask = reduceToOneDigit(year.toString().split("").reduce((acc, digit) => acc + parseInt(digit), 0)); // В
-    let karmaTask = reduceToOneDigit(day + month + soulTask); // Г
-    let comfortZone = reduceToOneDigit(day + month + soulTask + karmaTask); // Д
+    <!-- Пустая матрица (значения будут обновляться при расчете) -->
+    <div id="matrix">
+        <div class="circle" id="topNumber"></div> <!-- B -->
+        <div class="circle" id="leftNumber"></div> <!-- A -->
+        <div class="circle" id="rightNumber"></div> <!-- V -->
+        <div class="circle" id="bottomNumber"></div> <!-- G -->
+        <div class="circle center" id="centerNumber"></div> <!-- D -->
 
-    // Остальные Таланты от Бога
-    let mainTalentFromGod = month; // Б = Месяц рождения
-    let talent1 = reduceToOneDigit(month + comfortZone); // Б2 (Б+Д)
-    let talent2 = reduceToOneDigit(month + talent1); // Б1 (Б+Б2)
+        <div class="circle small" id="leftTop"></div>  <!-- ЛО -->
+        <div class="circle small" id="rightTop"></div> <!-- ЛМ -->
+        <div class="circle small" id="leftBottom"></div> <!-- МК ЖЕН -->
+        <div class="circle small" id="rightBottom"></div> <!-- МК МУЖ -->
+    </div>
 
-    // Материальная (Финансовая) Карма
-    let moneyEntry = reduceToOneDigit(comfortZone + soulTask); // Вход в Денежный Канал (Е)
-    let secondMaterialKarma = reduceToOneDigit(moneyEntry + soulTask); // Вторая энергия Материальной Кармы
+    <!-- SVG для рисования диаграммы -->
+    <svg id="matrixSvg" width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+        <!-- Фон -->
+        <rect x="0" y="0" width="500" height="500" fill="#1a0033"/>
 
-    // Кармический Хвост (по новой формуле)
-    let karmaTail1 = reduceToOneDigit(karmaTask + comfortZone); // Г1 = Г + Д
-    let karmaTail2 = reduceToOneDigit(karmaTask + karmaTail1); // Г2 = Г + Г1
+        <!-- 🔷 Внешний круг -->
+        <circle cx="250" cy="250" r="200" stroke="white" stroke-width="2" fill="none"/>
 
-    // Вход в Отношения (отдельно)
-    let relationshipEntry = karmaTail1; // Вход в Отношения = Г1
+        <!-- 🔶 Перевёрнутый квадрат (ромб) -->
+        <polygon points="250,50 400,250 250,450 100,250" stroke="gold" stroke-width="2" fill="none"/>
 
-    // Родовые линии
-    let fatherLine = reduceToOneDigit(day + month); // ЛО
-    let motherLine = reduceToOneDigit(month + soulTask); // ЛМ
+        <!-- 🔵 Центральное число (D, уменьшено) -->
+        <circle cx="250" cy="250" r="25" fill="#ffd700" stroke="black" stroke-width="2"/>
+        <text x="250" y="255" text-anchor="middle" font-size="18px" font-family="Arial" fill="black" id="centerNumber">D</text>
 
-    // Материальная Карма
-    let materialKarmaFather = reduceToOneDigit(soulTask + karmaTask); // МР
-    let materialKarmaMother = reduceToOneDigit(day + karmaTask); // ЖР
+        <!-- Четыре числа (A, B, V, G) -->
+        <circle cx="250" cy="80" r="30" fill="#8a2be2" stroke="black" stroke-width="2"/>
+        <text x="250" y="85" text-anchor="middle" font-size="20px" font-family="Arial" fill="white" id="topNumber">B</text>
 
-    // Предназначение (исправленная формула)
-    let destinyBefore40_AplusV = reduceToOneDigit(day + soulTask); // (А+В) → если >22, снова складываем
-    let destinyBefore40 = reduceToOneDigit(destinyBefore40_AplusV + (month + karmaTask)); // До 40 лет = (А+В) + (Б+Г)
-    let destiny40_60 = reduceToOneDigit((fatherLine + materialKarmaFather) + (motherLine + materialKarmaMother)); // И1
-    let spiritualDestiny = reduceToOneDigit(destinyBefore40 + destiny40_60); // Духовное предназначение
+        <circle cx="80" cy="250" r="30" fill="#8a2be2" stroke="black" stroke-width="2"/>
+        <text x="80" y="255" text-anchor="middle" font-size="20px" font-family="Arial" fill="white" id="leftNumber">A</text>
 
-    // Обновляем числа в диаграмме
-    updateMatrix([
-        comfortZone, // D (Центр)
-        soulTask, // B (Верх)
-        day, // A (Левый бок)
-        karmaTask, // G (Низ)
-        mainTalentFromGod, // V (Правый бок)
-        fatherLine, // ЛО (Левый верхний)
-        motherLine, // ЛМ (Правый верхний)
-        materialKarmaMother, // ЖР (Левый нижний)
-        materialKarmaFather // МР (Правый нижний)
-    ]);
-}
+        <circle cx="250" cy="420" r="30" fill="#8a2be2" stroke="black" stroke-width="2"/>
+        <text x="250" y="425" text-anchor="middle" font-size="20px" font-family="Arial" fill="white" id="bottomNumber">G</text>
 
-// Функция обновления диаграммы
-function updateMatrix(numbers = []) {
-    document.getElementById("centerNumber").textContent = numbers[0] || ""; // D
-    document.getElementById("topNumber").textContent = numbers[1] || ""; // B
-    document.getElementById("leftNumber").textContent = numbers[2] || ""; // A
-    document.getElementById("bottomNumber").textContent = numbers[3] || ""; // G
-    document.getElementById("rightNumber").textContent = numbers[4] || ""; // V
+        <circle cx="420" cy="250" r="30" fill="#8a2be2" stroke="black" stroke-width="2"/>
+        <text x="420" y="255" text-anchor="middle" font-size="20px" font-family="Arial" fill="white" id="rightNumber">V</text>
 
-    document.getElementById("leftTop").textContent = numbers[5] || ""; // ЛО
-    document.getElementById("rightTop").textContent = numbers[6] || ""; // ЛМ
-    document.getElementById("leftBottom").textContent = numbers[7] || ""; // ЖР
-    document.getElementById("rightBottom").textContent = numbers[8] || ""; // МР
-}
+        <!-- Внешние числа (Линии рода, материальная карма) -->
+        <circle cx="80" cy="80" r="30" fill="#22a6b3" stroke="black" stroke-width="2"/>
+        <text x="80" y="85" text-anchor="middle" font-size="18px" font-family="Arial" fill="white" id="leftTop">ЛО</text>
 
-// 👇 Теперь матрица полностью пустая при загрузке
-updateMatrix([]);
+        <circle cx="420" cy="80" r="30" fill="#22a6b3" stroke="black" stroke-width="2"/>
+        <text x="420" y="85" text-anchor="middle" font-size="18px" font-family="Arial" fill="white" id="rightTop">ЛМ</text>
+
+        <circle cx="80" cy="420" r="30" fill="#22a6b3" stroke="black" stroke-width="2"/>
+        <text x="80" y="425" text-anchor="middle" font-size="18px" font-family="Arial" fill="white" id="leftBottom">МК ЖЕН.</text>
+
+        <circle cx="420" cy="420" r="30" fill="#22a6b3" stroke="black" stroke-width="2"/>
+        <text x="420" y="425" text-anchor="middle" font-size="18px" font-family="Arial" fill="white" id="rightBottom">МК МУЖ.</text>
+
+        <!-- ✅ Линии к Материальной Карме (ЛО → МК ЖЕН, ЛМ → МК МУЖ) -->
+        <line x1="80" y1="80" x2="80" y2="420" stroke="white" stroke-width="2"/>  <!-- ЛО вниз -->
+        <line x1="420" y1="80" x2="420" y2="420" stroke="white" stroke-width="2"/>  <!-- ЛМ вниз -->
+        
+        <!-- ✅ Диагональные линии -->
+        <line x1="80" y1="80" x2="420" y2="420" stroke="white" stroke-width="2"/>  <!-- ЛО → МК ЖЕН -->
+        <line x1="420" y1="80" x2="80" y2="420" stroke="white" stroke-width="2"/>  <!-- ЛМ → МК МУЖ -->
+
+        <!-- ✅ Соединяем в квадрат -->
+        <line x1="80" y1="420" x2="420" y2="420" stroke="white" stroke-width="2"/>
+        <line x1="80" y1="80" x2="420" y2="80" stroke="white" stroke-width="2"/>
+
+        <!-- ✅ Добавляем линии A → В и Б → Г -->
+        <line x1="80" y1="250" x2="420" y2="250" stroke="white" stroke-width="2"/>  <!-- A → В -->
+        <line x1="250" y1="80" x2="250" y2="420" stroke="white" stroke-width="2"/>  <!-- Б → Г -->
+    </svg>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
