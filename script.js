@@ -45,16 +45,16 @@ function calculateMatrix() {
 
 // Функция обновления диаграммы
 function updateMatrix(numbers = []) {
-    document.getElementById("centerNumber").textContent = numbers[0] || ""; // D
-    document.getElementById("topNumber").textContent = numbers[1] || ""; // B
-    document.getElementById("leftNumber").textContent = numbers[2] || ""; // A
-    document.getElementById("bottomNumber").textContent = numbers[3] || ""; // G
-    document.getElementById("rightNumber").textContent = numbers[4] || ""; // V
+    document.getElementById("centerNumber").textContent = numbers[0] || ""; // D (Центр, Зона комфорта)
+    document.getElementById("topNumber").textContent = numbers[1] || ""; // B (Верх, Месяц рождения)
+    document.getElementById("leftNumber").textContent = numbers[2] || ""; // A (Лево, День рождения)
+    document.getElementById("bottomNumber").textContent = numbers[3] || ""; // G (Низ, Кармическая задача)
+    document.getElementById("rightNumber").textContent = numbers[4] || ""; // V (Право, Год рождения = Задача Души)
 
-    document.getElementById("leftTop").textContent = numbers[5] || ""; // ЛО
-    document.getElementById("rightTop").textContent = numbers[6] || ""; // ЛМ
-    document.getElementById("leftBottom").textContent = numbers[7] || ""; // МК ЖЕН
-    document.getElementById("rightBottom").textContent = numbers[8] || ""; // МК МУЖ
+    document.getElementById("leftTop").textContent = numbers[5] || ""; // ЛО (Линия отца)
+    document.getElementById("rightTop").textContent = numbers[6] || ""; // ЛМ (Линия матери)
+    document.getElementById("leftBottom").textContent = numbers[7] || ""; // МК ЖЕН (Мат. Карма Ж)
+    document.getElementById("rightBottom").textContent = numbers[8] || ""; // МК МУЖ (Мат. Карма М)
 }
 
 // 👇 Теперь матрица полностью пустая при загрузке
