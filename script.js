@@ -77,5 +77,6 @@ function updateMatrix(numbers = []) {
     document.getElementById("rightBottom").textContent = numbers[8] || ""; // МР
 }
 
-// 👇 Матрица пустая при загрузке страницы
-updateMatrix();
+// 👇 Теперь матрица полностью пустая при загрузке
+updateMatrix([]);
+
