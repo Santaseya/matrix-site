@@ -1,4 +1,3 @@
-// Функция, которая редуцирует число до одной цифры
 function reduceToOneDigit(num) {
     while (num > 22) {
         num = num.toString().split("").reduce((acc, digit) => acc + parseInt(digit), 0);
@@ -80,4 +79,3 @@ function updateMatrix(numbers = []) {
 
 // 👇 Теперь матрица полностью пустая при загрузке
 updateMatrix([]);
-
