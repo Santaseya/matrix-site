@@ -29,7 +29,7 @@ function calculateMatrix() {
     let MK_JEN = reduceToOneDigit(A + G);
     let MK_MUZ = reduceToOneDigit(V + G);
 
-    // **Вместо обновления Матрицы, выводим числа ВВЕРХУ!**
+    // Выводим числа СВЕРХУ
     let resultNumbers = `
         <p>${A}</p>
         <p>${B}</p>
@@ -42,6 +42,9 @@ function calculateMatrix() {
         <p>${MK_MUZ}</p>
     `;
     document.getElementById("resultNumbers").innerHTML = resultNumbers;
+
+    // Заполняем Матрицу (только после расчёта!)
+    updateMatrix([D, B, A, G, V, LO, LM, MK_JEN, MK_MUZ]);
 }
 
     // Обновляем числа в диаграмме
