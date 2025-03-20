@@ -15,28 +15,29 @@ function calculateMatrix() {
     let [year, month, day] = birthdate.split("-").map(Number);
 
     // Основные зоны
-    let mainTalentFromGod = month; // Б = Месяц рождения
-    let soulTask = reduceToOneDigit(year.toString().split("").reduce((acc, digit) => acc + parseInt(digit), 0)); // В
-    let karmaTask = reduceToOneDigit(day + month + soulTask); // Г
+    let resourceZone = day; // A = День рождения
+    let mainTalentFromGod = month; // B = Месяц рождения
+    let soulTask = reduceToOneDigit(year.toString().split("").reduce((acc, digit) => acc + parseInt(digit), 0)); // V = Год рождения (В)
+    let karmaTask = reduceToOneDigit(resourceZone + mainTalentFromGod + soulTask); // G = A + B + V (Г)
 
     // Зона комфорта
-    let comfortZone = reduceToOneDigit(day + month + soulTask + karmaTask); // Д
+    let comfortZone = reduceToOneDigit(resourceZone + mainTalentFromGod + soulTask + karmaTask); // D
 
     // Родовые линии
-    let fatherLine = reduceToOneDigit(day + month); // ЛО
-    let motherLine = reduceToOneDigit(month + soulTask); // ЛМ
+    let fatherLine = reduceToOneDigit(resourceZone + mainTalentFromGod); // ЛО
+    let motherLine = reduceToOneDigit(mainTalentFromGod + soulTask); // ЛМ
 
     // Материальная Карма
     let materialKarmaFather = reduceToOneDigit(soulTask + karmaTask); // МР
-    let materialKarmaMother = reduceToOneDigit(day + karmaTask); // ЖР
+    let materialKarmaMother = reduceToOneDigit(resourceZone + karmaTask); // ЖР
 
-    // Обновляем числа в диаграмме **(поменял местами!)**
+    // Обновляем числа в диаграмме **(теперь всё правильно расставлено!)**
     updateMatrix([
         comfortZone, // D (Центр)
         mainTalentFromGod, // B (Верх) = месяц рождения (Б)
-        day, // A (Левый бок)
-        karmaTask, // G (Низ) = A + B + V
-        soulTask, // V (Правый бок) = рассчитанное по году рождения (В)
+        resourceZone, // A (Левый бок) = день рождения
+        karmaTask, // G (Низ) = A + B + V (Г)
+        soulTask, // V (Правый бок) = рассчитанное число по году рождения (В)
         fatherLine, // ЛО (Левый верхний)
         motherLine, // ЛМ (Правый верхний)
         materialKarmaMother, // ЖР (Левый нижний)
