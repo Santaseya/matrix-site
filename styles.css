@@ -1,9 +1,9 @@
-/* 🌙 Подключаем шрифты */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Cormorant+Garamond:wght@300;400;700&display=swap');
+/* 🌙 Подключаем новые шрифты с кириллицей */
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&family=PT+Serif:wght@400;700&display=swap');
 
 /* 🌌 Общий стиль страницы */
 body {
-    font-family: "Cormorant Garamond", serif;
+    font-family: "PT Serif", serif;
     background: linear-gradient(to bottom, #10002b, #240046);
     color: #e0aaff;
     text-align: center;
@@ -12,7 +12,7 @@ body {
 
 /* 🔮 Заголовки */
 h1, h2, h3 {
-    font-family: "Cinzel", serif;
+    font-family: "Marcellus", serif;
     font-weight: 700;
     color: #ffd700;
     text-shadow: 2px 2px 8px #000;
@@ -51,7 +51,7 @@ button:hover {
 .result p {
     font-size: 20px;
     padding: 5px;
-    font-family: "Cormorant Garamond", serif;
+    font-family: "PT Serif", serif;
 }
 
 .result strong {
