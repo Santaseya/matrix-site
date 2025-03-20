@@ -82,3 +82,7 @@ window.onload = function() {
     updateMatrix(["", "", "", "", "", "", "", "", ""]); // Очищаем круги
     document.getElementById("resultNumbers").innerHTML = ""; // Очищаем список чисел сверху
 };
+window.onload = function() {
+    updateMatrix(["", "", "", "", "", "", "", "", ""]); // Очищаем круги в Матрице
+    document.getElementById("resultNumbers").innerHTML = ""; // Убираем числа сверху
+};
