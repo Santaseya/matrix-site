@@ -15,33 +15,31 @@ function calculateMatrix() {
     let [year, month, day] = birthdate.split("-").map(Number);
 
     // Основные зоны
-    let resourceZone = day; // A = День рождения
-    let mainTalentFromGod = month; // B = Месяц рождения
-    let soulTask = reduceToOneDigit(year.toString().split("").reduce((acc, digit) => acc + parseInt(digit), 0)); // V = Год рождения (В)
-    let karmaTask = reduceToOneDigit(resourceZone + mainTalentFromGod + soulTask); // G = A + B + V (Г)
-
-    // Зона комфорта
-    let comfortZone = reduceToOneDigit(resourceZone + mainTalentFromGod + soulTask + karmaTask); // D
+    let A = day;
+    let B = month;
+    let V = reduceToOneDigit(year.toString().split("").reduce((acc, digit) => acc + parseInt(digit), 0));
+    let G = reduceToOneDigit(A + B + V);
+    let D = reduceToOneDigit(A + B + V + G);
 
     // Родовые линии
-    let fatherLine = reduceToOneDigit(resourceZone + mainTalentFromGod); // ЛО
-    let motherLine = reduceToOneDigit(mainTalentFromGod + soulTask); // ЛМ
+    let LO = reduceToOneDigit(A + B);
+    let LM = reduceToOneDigit(B + V);
 
     // Материальная Карма
-    let materialKarmaFather = reduceToOneDigit(soulTask + karmaTask); // МР
-    let materialKarmaMother = reduceToOneDigit(resourceZone + karmaTask); // ЖР
+    let MK_JEN = reduceToOneDigit(A + G);
+    let MK_MUZ = reduceToOneDigit(V + G);
 
-    // Обновляем числа в диаграмме **(теперь всё правильно расставлено!)**
+    // Обновляем числа в диаграмме
     updateMatrix([
-        comfortZone, // D (Центр)
-        mainTalentFromGod, // B (Верх) = месяц рождения (Б)
-        resourceZone, // A (Левый бок) = день рождения
-        karmaTask, // G (Низ) = A + B + V (Г)
-        soulTask, // V (Правый бок) = рассчитанное число по году рождения (В)
-        fatherLine, // ЛО (Левый верхний)
-        motherLine, // ЛМ (Правый верхний)
-        materialKarmaMother, // ЖР (Левый нижний)
-        materialKarmaFather // МР (Правый нижний)
+        D, // Центр (Зона комфорта)
+        B, // Верх (Главный талант → месяц рождения)
+        A, // Левый бок (Зона ресурса → день рождения)
+        G, // Низ (Кармическая задача)
+        V, // Правый бок (Задача души)
+        LO, // Левый верхний (Линия отца)
+        LM, // Правый верхний (Линия матери)
+        MK_JEN, // Левый нижний (Материальная карма по женскому роду)
+        MK_MUZ // Правый нижний (Материальная карма по мужскому роду)
     ]);
 }
 
@@ -55,8 +53,8 @@ function updateMatrix(numbers = []) {
 
     document.getElementById("leftTop").textContent = numbers[5] || ""; // ЛО
     document.getElementById("rightTop").textContent = numbers[6] || ""; // ЛМ
-    document.getElementById("leftBottom").textContent = numbers[7] || ""; // ЖР
-    document.getElementById("rightBottom").textContent = numbers[8] || ""; // МР
+    document.getElementById("leftBottom").textContent = numbers[7] || ""; // МК ЖЕН
+    document.getElementById("rightBottom").textContent = numbers[8] || ""; // МК МУЖ
 }
 
 // 👇 Теперь матрица полностью пустая при загрузке
