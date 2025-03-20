@@ -1,0 +1,54 @@
+/* 🌙 Общий стиль */
+body {
+    font-family: "Cormorant Garamond", serif;
+    background: linear-gradient(to bottom, #1a001a, #330033);
+    color: #e6ccff;
+    text-align: center;
+    padding: 20px;
+}
+
+/* 🌟 Заголовки */
+h1 {
+    font-size: 36px;
+    color: #ffcc00;
+    text-shadow: 2px 2px 8px #000;
+}
+
+/* 🔮 Ввод даты и кнопка */
+input, button {
+    background: #4d004d;
+    border: 2px solid #ffcc00;
+    color: #ffcc00;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+button:hover {
+    background: #ffcc00;
+    color: #4d004d;
+    cursor: pointer;
+}
+
+/* 📜 Результаты */
+.result {
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid #ffcc00;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
+    display: inline-block;
+    text-align: left;
+    max-width: 500px;
+}
+
+.result p {
+    font-size: 20px;
+    padding: 5px;
+}
+
+.result strong {
+    color: #ffcc00;
+}
