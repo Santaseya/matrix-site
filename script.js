@@ -104,17 +104,13 @@ function updateMatrix(numbers) {
     document.getElementById("bottomNumber").textContent = numbers[3]; // G
     document.getElementById("rightNumber").textContent = numbers[4]; // V
 
-    document.getElementById("leftTop").textContent = numbers[5]; // ЛО (без текста)
-    document.getElementById("rightTop").textContent = numbers[6]; // ЛМ (без текста)
-    document.getElementById("leftBottom").textContent = numbers[7]; // МК ЖЕН (без текста)
-    document.getElementById("rightBottom").textContent = numbers[8]; // МК МУЖ (без текста)
+    document.getElementById("leftTop").textContent = numbers[5]; // Число, без подписи
+    document.getElementById("rightTop").textContent = numbers[6]; // Число, без подписи
+    document.getElementById("leftBottom").textContent = numbers[7]; // Число, без подписи
+    document.getElementById("rightBottom").textContent = numbers[8]; // Число, без подписи
 }
 
 // Пример чисел (заменим на расчётные)
 const exampleNumbers = [6, 3, 8, 19, 11, 22, 14, 5, 7];
 updateMatrix(exampleNumbers);
 
-
-// Пример данных (потом заменим на расчётные)
-const exampleNumbers = [6, 3, 8, 19, 3];
-updateMatrix(exampleNumbers);
