@@ -97,3 +97,14 @@ function calculateMatrix() {
 
     document.getElementById("result").innerHTML = resultText;
 }
+function updateMatrix(numbers) {
+    document.getElementById("centerNumber").textContent = numbers[0];
+    document.getElementById("topNumber").textContent = numbers[1];
+    document.getElementById("leftNumber").textContent = numbers[2];
+    document.getElementById("rightNumber").textContent = numbers[3];
+    document.getElementById("bottomNumber").textContent = numbers[4];
+}
+
+// Пример данных (потом заменим на расчётные)
+const exampleNumbers = [6, 3, 8, 19, 3];
+updateMatrix(exampleNumbers);
