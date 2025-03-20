@@ -4,7 +4,6 @@ function reduceToOneDigit(num) {
     }
     return num;
 }
-
 function calculateMatrix() {
     let birthdate = document.getElementById("birthdate").value;
     if (!birthdate) {
@@ -29,7 +28,7 @@ function calculateMatrix() {
     let MK_JEN = reduceToOneDigit(A + G);
     let MK_MUZ = reduceToOneDigit(V + G);
 
-    // Выводим числа СВЕРХУ
+    // **Выводим числа сверху**
     let resultNumbers = `
         <p>${A}</p>
         <p>${B}</p>
@@ -43,9 +42,10 @@ function calculateMatrix() {
     `;
     document.getElementById("resultNumbers").innerHTML = resultNumbers;
 
-    // Заполняем Матрицу (только после расчёта!)
+    // **Заполняем Матрицу (только после расчёта!)**
     updateMatrix([D, B, A, G, V, LO, LM, MK_JEN, MK_MUZ]);
 }
+
 
     // Обновляем числа в диаграмме
     updateMatrix([
