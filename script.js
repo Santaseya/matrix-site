@@ -98,12 +98,22 @@ function calculateMatrix() {
     document.getElementById("result").innerHTML = resultText;
 }
 function updateMatrix(numbers) {
-    document.getElementById("centerNumber").textContent = numbers[0];
-    document.getElementById("topNumber").textContent = numbers[1];
-    document.getElementById("leftNumber").textContent = numbers[2];
-    document.getElementById("rightNumber").textContent = numbers[3];
-    document.getElementById("bottomNumber").textContent = numbers[4];
+    document.getElementById("centerNumber").textContent = numbers[0]; // D
+    document.getElementById("topNumber").textContent = numbers[1]; // B
+    document.getElementById("leftNumber").textContent = numbers[2]; // A
+    document.getElementById("bottomNumber").textContent = numbers[3]; // G
+    document.getElementById("rightNumber").textContent = numbers[4]; // V
+
+    document.getElementById("leftTop").textContent = numbers[5]; // ЛО (без текста)
+    document.getElementById("rightTop").textContent = numbers[6]; // ЛМ (без текста)
+    document.getElementById("leftBottom").textContent = numbers[7]; // МК ЖЕН (без текста)
+    document.getElementById("rightBottom").textContent = numbers[8]; // МК МУЖ (без текста)
 }
+
+// Пример чисел (заменим на расчётные)
+const exampleNumbers = [6, 3, 8, 19, 11, 22, 14, 5, 7];
+updateMatrix(exampleNumbers);
+
 
 // Пример данных (потом заменим на расчётные)
 const exampleNumbers = [6, 3, 8, 19, 3];
