@@ -13,7 +13,18 @@
     <input type="date" id="birthdate">
     <button onclick="calculateMatrix()">Рассчитать</button>
 
-    <div class="result" id="result"></div>
+    <div id="matrix">
+    <div class="circle" id="topNumber"></div>  <!-- Верх (B = Месяц) -->
+    <div class="circle" id="leftNumber"></div>  <!-- Лево (A = День) -->
+    <div class="circle" id="rightNumber"></div>  <!-- Право (V = Год) -->
+    <div class="circle" id="bottomNumber"></div>  <!-- Низ (G = Кармическая задача) -->
+    <div class="circle center" id="centerNumber"></div>  <!-- Центр (D = Зона комфорта) -->
+    
+    <div class="circle small" id="leftTop"></div>  <!-- ЛО (Линия отца) -->
+    <div class="circle small" id="rightTop"></div>  <!-- ЛМ (Линия матери) -->
+    <div class="circle small" id="leftBottom"></div>  <!-- МК ЖЕН (Мат. Карма Ж) -->
+    <div class="circle small" id="rightBottom"></div>  <!-- МК МУЖ (Мат. Карма М) -->
+</div>
 <svg <svg id="matrixSvg" width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
     <!-- Фон -->
     <rect x="0" y="0" width="500" height="500" fill="#1a0033"/>
